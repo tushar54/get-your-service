@@ -6,12 +6,26 @@ import Home from "../AllRoute/Home";
 import Login from "../AllRoute/Login";
 import Register from "../AllRoute/Register";
 import AddAService from "../AllRoute/AddAService";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import PopularServices from "../AllRoute/PopularServices";
+import AllService from "../AllRoute/AllService";
 
 
   export const RootRoute = createBrowserRouter([
     {
       path: "/",
-      element: <Home></Home>
+      element: <Home></Home>,
+      children:[
+        {
+          path:'/',
+          element:<PopularServices></PopularServices>
+
+        }
+      ]
+    },
+    {
+      path:'/allServices',
+      element:<AllService></AllService>
     },
   {
     path:"/login",
@@ -23,6 +37,6 @@ import AddAService from "../AllRoute/AddAService";
   },
   {
     path:"/addService",
-    element:<AddAService></AddAService>
+    element:<PrivateRoute><AddAService></AddAService></PrivateRoute>
   }
   ]);

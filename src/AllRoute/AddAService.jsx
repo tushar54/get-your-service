@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
-// import { toast } from 'react-toastify';
-// import axios from 'axios';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
 const AddAService = () => {
   const [formData, setFormData] = useState({
@@ -51,13 +52,11 @@ const AddAService = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-    //   toast.error('Please correct the errors before submitting.');
       return;
     }
 
     const user = auth.currentUser;
     if (!user) {
-    //   toast.error('You must be logged in to add a service.');
       return;
     }
 
@@ -69,17 +68,25 @@ const AddAService = () => {
         image: user.photoURL || '',
       },
     };
+    console.log(serviceData)
 
-//     try {
-//       const response = await axios.post('https://your-mongo-api-url.com/services', serviceData);
-//       if (response.status === 201) {
-//         toast.success('Service added successfully!');
-//         navigate('/'); // Redirect to home or services page
-//       }
-//     } catch (error) {
-//       console.error('Error adding service:', error);
-//       toast.error('Failed to add service. Please try again.');
-//     }
+    try {
+      const response = await axios.post('http://localhost:3000/addAdata', serviceData);
+      if (response.status === 200) {
+        Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success"
+        });
+      // console.log(response.status)
+        navigate('/'); // Redirect to home or services page
+      }
+    }
+  
+     catch (error) {
+      console.error('Error adding service:', error);
+      toast.error('Failed to add service. Please try again.');
+    }
   };
 
   return (

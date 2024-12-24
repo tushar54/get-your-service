@@ -1,12 +1,12 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ data ,uniq}) => {
     const { imageUrl,
         serviceName,
+        _id,
         price,
         serviceProvider,
-        serviceArea,
         description } = data || {}
     return (
         <div>
@@ -34,7 +34,7 @@ const ServiceCard = ({ data ,uniq}) => {
 
                     <div className="card-actions justify-end items-center">
                         <p className='border-2 text-center rounded-lg font-bold'>Price : {price}</p>
-                        <button className="btn">Details</button>
+                        <Link to={`/service/${_id}`}><button className="btn">Details</button></Link>
                     </div>
                 </div>
             </div>

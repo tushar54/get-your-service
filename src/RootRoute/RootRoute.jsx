@@ -9,6 +9,9 @@ import AddAService from "../AllRoute/AddAService";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import PopularServices from "../AllRoute/PopularServices";
 import AllService from "../AllRoute/AllService";
+import ServiceDetails from "../AllRoute/ServiceDetails";
+import ManageService from "../AllRoute/ManageService ";
+import BookedService from "../AllRoute/BookedService";
 
 
   export const RootRoute = createBrowserRouter([
@@ -22,6 +25,10 @@ import AllService from "../AllRoute/AllService";
 
         }
       ]
+    },
+    {
+      path:'/service/:id',
+      element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
     },
     {
       path:'/allServices',
@@ -38,5 +45,13 @@ import AllService from "../AllRoute/AllService";
   {
     path:"/addService",
     element:<PrivateRoute><AddAService></AddAService></PrivateRoute>
+  },
+  {
+    path:'/ManageService',
+    element:<PrivateRoute><ManageService></ManageService> </PrivateRoute>
+  },
+  {
+    path:'/bookedservice',
+    element:<PrivateRoute><BookedService></BookedService></PrivateRoute>
   }
   ]);

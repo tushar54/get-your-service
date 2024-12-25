@@ -1,13 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../AllContext/Authcontext';
+import axios from 'axios';
 
 const BookedService = () => {
     const { currentUser } = useContext(Context)
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:3000/booked/${currentUser.email}`)
-            .then((res) => res.json())
-            .then((data) => setServices(data));
+        const fetchServices = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/booked/${currentUser.email}`,{withCredentials:true});
+                setServices(response.data);
+            } catch (error) {
+                console.error("Error fetching services:", error);
+            }
+        };
+
+        fetchServices();
     }, [currentUser.email]);
     console.log(services)
 

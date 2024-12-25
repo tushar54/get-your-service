@@ -1,64 +1,63 @@
 import { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import { Context } from '../AllContext/Authcontext';
 import Swal from 'sweetalert2';
 
 const ManageService = () => {
-    const {currentUser}=useContext(Context)
+  const { currentUser } = useContext(Context);
   const [services, setServices] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
 
   // Fetch services added by the user
   useEffect(() => {
-    fetch(`http://localhost:3000/services/${currentUser.email}`)
-      .then((res) => res.json())
-      .then((data) => setServices(data));
+    axios
+      .get(`http://localhost:3000/services/${currentUser.email}`)
+      .then((res) => setServices(res.data))
+      .catch((error) => console.error("Error fetching services:", error));
   }, [currentUser.email]);
 
   // Handle delete service
   const handleDelete = (id) => {
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-                fetch(`http://localhost:3000/delete/${id}`, { method: 'DELETE' })
-                  .then((res) => res.json())
-                  .then(() => {
-                    setServices((prev) => prev.filter((service) => service._id !== id));
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                      })
-                  });
-        }
-      });
-    
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/delete/${id}`)
+          .then(() => {
+            setServices((prev) => prev.filter((service) => service._id !== id));
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((error) => console.error("Error deleting service:", error));
+      }
+    });
   };
 
   // Handle update service
   const handleUpdate = (updatedService) => {
-    fetch(`http://localhost:3000/services/${updatedService._id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updatedService),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
+    axios
+      .put(`http://localhost:3000/services/${updatedService._id}`, updatedService)
+      .then((res) => {
+        console.log(res.data);
         setServices((prev) =>
           prev.map((service) =>
             service._id === updatedService._id ? updatedService : service
           )
         );
         setShowEditModal(false);
-      });
+      })
+      .catch((error) => console.error("Error updating service:", error));
   };
 
   return (

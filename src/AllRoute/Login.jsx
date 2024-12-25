@@ -7,7 +7,7 @@ import { Context } from '../AllContext/Authcontext';
 
 
 const Login = () => {
-  const { Signin,googleSignup } = useContext(Context);
+  const { Signin,googleSignup,loading } = useContext(Context);
 
   const navigate = useNavigate()
   const [error, setError] = useState('');
@@ -23,7 +23,9 @@ const Login = () => {
       Signin(email, password)
       .then((result) => {
         setError('');
-        navigate(location?.state ? location.state:'/')
+        if(!loading){
+          navigate(location?.state ? location.state:'/')
+        }
     
 
       })

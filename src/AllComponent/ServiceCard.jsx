@@ -17,6 +17,7 @@ const ServiceCard = ({ data ,uniq}) => {
                         alt={serviceName} />
                 </figure>
                 <div className="card-body">
+                    <div>{serviceName}</div>
                     <div className='flex  justify-center items-center gap-3'>
                         <img className='w-[50px] h-[50px] rounded-full' src={serviceProvider.image} alt={serviceProvider.name} />
                         <p>{serviceProvider.name}</p>

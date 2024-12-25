@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import { Context } from '../AllContext/Authcontext';
+import { ThemeContext } from '../AllContext/ThemeProvider';
+import { CiDark, CiLight } from "react-icons/ci";
 
 const Navbar = () => {
     const { currentUser, Out } = useContext(Context)
+    const { theme, toggleTheme } = useContext(ThemeContext);
     console.log(currentUser)
     const handleLogOut = () => {
         Out()
@@ -17,7 +20,7 @@ const Navbar = () => {
                 : 'text-gray-600 hover:text-red-500'
         }>Home</NavLink>
 
-        <NavLink to={'/'} className={({ isActive }) =>
+        <NavLink to={'/allServices'} className={({ isActive }) =>
             isActive
                 ? 'border-b-2 border-red-500 text-red-500 font-bold'
                 : 'text-gray-600 hover:text-red-500'
@@ -26,13 +29,14 @@ const Navbar = () => {
         {
             currentUser ? <>
                 <div className="dropdown dropdown-hover z-10">
-                    <div tabIndex={0} role="button" className="btn m-1">Dashboard</div>
+                    <div tabIndex={0} role="button" className=" m-1">Dashboard</div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                         <li><NavLink to={'/addService'}>Add Service</NavLink></li>
                         <li><NavLink to={'/ManageService'}>Manage Service</NavLink></li>
                         <li><NavLink to={'/bookedservice'}>Booked Service</NavLink></li>
-                        
-                        <li><a>Service-To-Do</a></li>
+                        <li><NavLink to={'/serviceToDo'}>Service To Do</NavLink></li>
+
+                       
                     </ul>
                 </div>
             </> : ''
@@ -68,6 +72,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <a className=""><i className='flex justify-center items-center text-3xl'> <img src={logo} alt="" /> Repair </i></a>
+                <button className="btn mr-3" onClick={toggleTheme}>
+                    {theme === 'light' ? <CiDark></CiDark> : <CiLight />}
+                </button>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className=" space-x-2 menu menu-horizontal px-1">

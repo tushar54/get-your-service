@@ -9,24 +9,18 @@ const DynamicTitle = () => {
       "/login": "Login Page",
       "/": "Home",
       "/register": "Registration",
-      "/allmovies": "All Movies",
-      "/addmovie": "Add Movie",
+      "/allServices": "allServices",
+      "/addService": "addService",
+      "/ManageService": "ManageService",
+      "/bookedservice": "bookedservice",
+      "/serviceToDo": "serviceToDo",
     };
 
     // Check for dynamic routes or nested paths
-    if (location.pathname.startsWith("/favorite/")) {
+    if (location.pathname.startsWith("/service/")) {
       const id = location.pathname.split("/")[2]; // Extract the dynamic ID
-      document.title = `favorite - ${id || "Unknown"}`;
+      document.title = `service - ${id || "Unknown"}`;
     } 
-    else if (location.pathname.startsWith("/allmovies/")) {
-        const id = location.pathname.split("/")[2]; // Extract the dynamic ID
-        document.title = `allmovies - ${id || "Unknown"}`;
-      } 
-    else if (location.pathname.startsWith("/watchlists/")) {
-        const id = location.pathname.split("/")[2]; // Extract the dynamic ID
-        document.title = `watchlists - ${id || "Unknown"}`;
-      } 
-      
     else {
       document.title = routeTitles[location.pathname] || "Default Title";
     }

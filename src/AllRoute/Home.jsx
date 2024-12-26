@@ -3,6 +3,7 @@ import Navbar from '../AllComponent/Navbar';
 import Footer from '../AllComponent/Footer';
 import Bannar from '../AllComponent/Bannar';
 import { Outlet, useLocation, } from 'react-router-dom';
+import WhyWeBest from '../AllComponent/WhyWeBest';
 
 const Home = () => {
     console.log(navigation)
@@ -29,6 +30,9 @@ const Home = () => {
                     location.pathname === '/' && <Bannar></Bannar>
                 }
                 <Outlet></Outlet>
+                {
+                    location.pathname === '/' && <WhyWeBest></WhyWeBest>
+                }
 
                 <Footer></Footer>
             </div>

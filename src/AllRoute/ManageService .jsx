@@ -59,10 +59,13 @@ const ManageService = () => {
       })
       .catch((error) => console.error("Error updating service:", error));
   };
+  if(services.length===0){
+    return  <div className='text-center font-bold text-3xl'> There is no manage to do</div>
+}
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Manage Services</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center ">Manage Services</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {services.map((service) => (
           <div key={service._id} className="card bg-base-100 shadow-md">

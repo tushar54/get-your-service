@@ -34,7 +34,7 @@ const PopularServices = () => {
            </div>
 
            <div>
-            <Link to={'/allServices'}><button className='btn btn-error'>Show All Services</button></Link>
+            <Link to={'/allServices'}><button className='btn bg-green-600 mt-4 text-white'>Show All Services</button></Link>
            </div>
         </div>
     );

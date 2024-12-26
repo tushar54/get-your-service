@@ -87,7 +87,7 @@ const Navbar = () => {
                 </button>
                 {
                     currentUser ? <div className='flex justify-center items-center gap-2'> <p className='font-semibold md:display hidden'>{currentUser.displayName}</p> <div className="tooltip tooltip-bottom z-10" data-tip={currentUser.email}>
-                        <img className='w-[50px] h-[50px] rounded-full' src={currentUser.photoURL} alt="" />
+                        <img referrerPolicy="no-referrer" className='w-[50px] h-[50px] rounded-full' src={currentUser.photoURL} alt="" />
                     </div> <Link onClick={handleLogOut} className='hover:bg-red-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl '>Log-Out</Link></div> : <Link to={'/login'} className='hover:bg-green-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl'>LogIn</Link>
                 }
             </div>

@@ -5,6 +5,7 @@ import axios from 'axios'; // Import Axios
 const ServiceToDo = () => {
     const { currentUser } = useContext(Context);
     const [services, setServices] = useState([]);
+    console.log(services)
 
     // Fetch services from the backend
     useEffect(() => {
@@ -43,6 +44,10 @@ const ServiceToDo = () => {
             console.error('Error updating status:', error);
         }
     };
+    if(services.length===0)
+    {
+        return <div className='text-center font-bold text-3xl'> There is no Service to do</div>
+    }
 
     return (
         <div className="overflow-x-auto">

@@ -9,6 +9,7 @@ const ServiceDetails = () => {
   const { id } = useParams();
   const [service, setService] = useState(null);
   const [showModal, setShowModal] = useState(false); // Modal visibility state
+  console.log(service)
 
   useEffect(() => {
     // Fetch service details using Axios
@@ -28,33 +29,34 @@ const ServiceDetails = () => {
 
   return (
     <div className="p-4">
-      <div className="card w-full bg-base-100 shadow-md">
-        <figure>
-          <img
+      <div className="card lg:card-side bg-base-100 shadow-xl">
+        <figure className=" lg:w-1/3 w-full flex-none">
+          <img className="rounded-md"
             src={service.imageUrl}
-            alt={service.serviceName}
-            className="w-full h-64 object-cover"
-          />
+            alt="Album" />
         </figure>
         <div className="card-body">
-          <h1 className="text-2xl font-bold">{service.serviceName}</h1>
-          <p className="text-sm text-gray-600">{service.description}</p>
-          <p className="font-bold">Price: ${service.price}</p>
-          <div className="flex items-center mt-4">
-            <img
-              src={service.serviceProvider.image}
-              alt={service.serviceProvider.name}
-              className="w-10 h-10 rounded-full mr-2"
-            />
-            <span>{service.serviceProvider.name}</span>
+          <h2 className="card-title">{service.
+            serviceName}</h2>
+          <p className="font-bold">Service Details:</p>
+          <p className="font-semibold text-sm">{service.description}</p>
+          <p className="font-semibold"><span className="font-bold">Service Area:</span> {service.serviceArea}</p>
+          <p className="font-bold">Price: <span className="border-2 px-4 py-1 rounded-md">{service.price}</span></p>
+          <div className="flex justify-center items-center gap-4"><img src={service.serviceProvider.image} className="w-[30px] h-[30px] rounded-full" alt="" />
+           <p className="font-semibold">{service.serviceProvider.email}</p>
+           <p className="font-semibold">(Provider information)</p>
+           
+           </div>
+
+
+          <div className="card-actions justify-end ">
+            <button
+              className="btn  bg-green-500 mt-4 w-3/5"
+              onClick={() => setShowModal(true)}
+            >
+              Book Now
+            </button>
           </div>
-          <p>Location: {service.serviceArea}</p>
-          <button
-            className="btn btn-primary mt-4"
-            onClick={() => setShowModal(true)}
-          >
-            Book Now
-          </button>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import { ToastContainer, toast } from 'react-toastify';
 const ServiceBookingModal = ({
   serviceId,
   serviceName,
@@ -31,7 +31,7 @@ const ServiceBookingModal = ({
     };
 
     if (providerEmail === currentUserEmail) {
-      return console.log("Provider and user cannot be the same.");
+     return toast("Error Author can't book");
     }
 
     try {
@@ -162,6 +162,7 @@ const ServiceBookingModal = ({
           Cancel
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
+import Swal from "sweetalert2";
 const ServiceBookingModal = ({
   serviceId,
   serviceName,
@@ -45,15 +46,29 @@ const ServiceBookingModal = ({
         }
       );
 
-      if (response.status === 200) {
-        alert("Booking successful!");
+      if (response.status === 201) {
+        Swal.fire({
+          title: "Booked",
+          text: "You clicked the button!",
+          icon: "success"
+        });
         onClose(); // Close the modal
       } else {
-        alert("Failed to book the service. Please try again.");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "something is wrong",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
       }
     } catch (error) {
-      console.error("Error booking service:", error);
-      alert("An error occurred. Please try again later.");
+      
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You have already booked",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
     }
   };
 

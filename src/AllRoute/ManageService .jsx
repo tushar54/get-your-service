@@ -49,7 +49,11 @@ const ManageService = () => {
     axios
       .put(`https://assignment-11-server-side-mocha.vercel.app/services/${updatedService._id}`, updatedService)
       .then((res) => {
-        console.log(res.data);
+        Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success"
+        });
         setServices((prev) =>
           prev.map((service) =>
             service._id === updatedService._id ? updatedService : service

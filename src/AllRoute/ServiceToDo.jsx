@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../AllContext/Authcontext';
 import axios from 'axios'; // Import Axios
+import { ToastContainer, toast } from 'react-toastify';
 
 const ServiceToDo = () => {
     const { currentUser } = useContext(Context);
@@ -29,6 +30,7 @@ const ServiceToDo = () => {
             });
 
             if (response.status === 200) {
+                toast.success('change the status');
                 // Update the local state
                 setServices((prevServices) =>
                     prevServices.map((service) =>
@@ -86,6 +88,7 @@ const ServiceToDo = () => {
                     </tbody>
                 ))}
             </table>
+            <ToastContainer />
         </div>
     );
 };

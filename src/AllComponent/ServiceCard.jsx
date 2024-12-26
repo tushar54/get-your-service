@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ServiceCard = ({ data ,uniq}) => {
+const ServiceCard = ({ data, uniq }) => {
     const { imageUrl,
         serviceName,
         _id,
@@ -10,28 +10,29 @@ const ServiceCard = ({ data ,uniq}) => {
         description } = data || {}
     return (
         <div>
-            <div className="card card-side bg-base-100 shadow-xl ">
-                <figure className='w-[260px] h-[194px]'>
-                    <img className='w-full h-full'
+            <div className="card card-side bg-base-100 shadow-xl flex flex-col md:flex-row ">
+                <figure className='flex-none'>
+                    <img className='md:w-full md:h-full w-[300px] h-[250px] rounded-md md: rounded-l-md'
                         src={imageUrl}
                         alt={serviceName} />
                 </figure>
                 <div className="card-body">
-                    <div>{serviceName}</div>
-                    <div className='flex  justify-center items-center gap-3'>
-                        <img className='w-[50px] h-[50px] rounded-full' src={serviceProvider.image} alt={serviceProvider.name} />
-                        <p>{serviceProvider.name}</p>
-                        {
-                            uniq?<p>{uniq}</p>:''
-                        }
-
-                    </div>
-                    <p className="text-sm text-gray-500">
+                    <div className='text-lg font-bold'>{serviceName}  {
+                            uniq ? <p className='text-sm font-semibold'> Service Area: {uniq}</p> : ''
+                        }</div>
+                    <p className="font-bold text-gray-500">
                         {description.length > 100
                             ? `${description.slice(0, 100)}...`
                             : description}
-                         
+
                     </p>
+                    <div className='flex  justify-center items-center gap-3'>
+                        <img className='w-[30px] h-[30px] rounded-full' src={serviceProvider.image} alt={serviceProvider.name} />
+                        <p className='text-sm font-bold'>{serviceProvider.name} (Provider)</p>
+                       
+
+                    </div>
+
 
                     <div className="card-actions justify-end items-center">
                         <p className='border-2 text-center rounded-lg font-bold'>Price : {price}</p>

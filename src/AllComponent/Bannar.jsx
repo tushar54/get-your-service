@@ -36,28 +36,28 @@ export default function Bannar() {
         <SwiperSlide
           className="bg-cover bg-center w-full h-full "
           style={{ backgroundImage: `url(${img1})` }}
-        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And I Hope That You Will be Staisfy.</div>
+        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And We Hope That You Will be Staisfy.</div>
           {/* Optional content inside the slide */}
         </SwiperSlide>
 
         <SwiperSlide
           className="bg-cover bg-center w-full h-full"
           style={{ backgroundImage: `url(${img2})` }}
-        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And I Hope That You Will be Staisfy.</div>
+        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And We Hope That You Will be Staisfy.</div>
           {/* Optional content inside the slide */}
         </SwiperSlide>
 
         <SwiperSlide
           className="bg-cover bg-center w-full h-full"
           style={{ backgroundImage: `url(${img3})` }}
-        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And I Hope That You Will be Staisfy.</div>
+        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And We Hope That You Will be Staisfy.</div>
           {/* Optional content inside the slide */}
         </SwiperSlide>
 
         <SwiperSlide
           className="bg-cover bg-center w-full h-full"
           style={{ backgroundImage: `url(${img4})` }}
-        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And I Hope That You Will be Staisfy.</div>
+        ><div className='font-bold flex justify-center items-center w-full h-full text-center text-white text-3xl'>You Can Choose Any Service <br></br>.And We Hope That You Will be Staisfy.</div>
           {/* Optional content inside the slide */}
         </SwiperSlide>
 

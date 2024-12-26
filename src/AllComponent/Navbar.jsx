@@ -36,7 +36,7 @@ const Navbar = () => {
                         <li><NavLink to={'/bookedservice'}>Booked Service</NavLink></li>
                         <li><NavLink to={'/serviceToDo'}>Service To Do</NavLink></li>
 
-                       
+
                     </ul>
                 </div>
             </> : ''
@@ -71,10 +71,8 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <Link to={'/'} className=""><i className='flex justify-center items-center text-3xl gap-2'> <img className='w-[70px] h-[70px] ' src={logo} alt="" /> Repair </i></Link>
-                <button className="btn ml-2" onClick={toggleTheme}>
-                    {theme === 'light' ? <CiDark></CiDark> : <CiLight />}
-                </button>
+                <Link to={'/'} className=""><i className='flex justify-center items-center text-3xl gap-2'> <img className='w-[50px] h-[50px] ' src={logo} alt="" /> Repair </i></Link>
+
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className=" space-x-6 text-lg menu menu-horizontal px-1 font-bold text-green-600 ">
@@ -83,11 +81,14 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end space-x-2">
+                <button className="btn ml-2" onClick={toggleTheme}>
+                    {theme === 'light' ? <CiDark></CiDark> : <CiLight />}
+                </button>
                 {
-                    currentUser ? <div className='flex justify-center items-center gap-2'> <p className='font-semibold'>{currentUser.displayName}</p> <div className="tooltip tooltip-bottom z-10" data-tip={currentUser.email}>
-                    <img className='w-[50px] h-[50px] rounded-full' src={currentUser.photoURL} alt="" />
-                  </div> <Link onClick={handleLogOut} className='hover:bg-red-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl '>Log-Out</Link></div> : <Link to={'/login'} className='hover:bg-green-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl'>LogIn</Link>
+                    currentUser ? <div className='flex justify-center items-center gap-2'> <p className='font-semibold md:display hidden'>{currentUser.displayName}</p> <div className="tooltip tooltip-bottom z-10" data-tip={currentUser.email}>
+                        <img className='w-[50px] h-[50px] rounded-full' src={currentUser.photoURL} alt="" />
+                    </div> <Link onClick={handleLogOut} className='hover:bg-red-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl '>Log-Out</Link></div> : <Link to={'/login'} className='hover:bg-green-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl'>LogIn</Link>
                 }
             </div>
         </div>

@@ -2,32 +2,33 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ServiceBookingModal from "../AllComponent/ServiceBookingModal";
 import { Context } from "../AllContext/Authcontext";
- // Modal component
+import axios from "axios"; // Import Axios
 
 const ServiceDetails = () => {
-  const {currentUser}=useContext(Context)
-  console.log(currentUser)
-  // console.log(currentUser)
-  const {id } = useParams();
+  const { currentUser } = useContext(Context);
+  const { id } = useParams();
   const [service, setService] = useState(null);
   const [showModal, setShowModal] = useState(false); // Modal visibility state
- 
 
   useEffect(() => {
-    // Replace with your actual API or database fetch logic
-    fetch(`http://localhost:3000/service/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setService(data);
-      });
+    // Fetch service details using Axios
+    const fetchServiceDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/service/${id}`);
+        setService(response.data);
+      } catch (error) {
+        console.error("Error fetching service details:", error);
+      }
+    };
+
+    fetchServiceDetails();
   }, [id]);
-  console.log(service)
 
   if (!service) return <p>Loading...</p>;
 
   return (
     <div className="p-4">
-      <div className="card w-full bg-base-100 shadow-md ">
+      <div className="card w-full bg-base-100 shadow-md">
         <figure>
           <img
             src={service.imageUrl}
@@ -65,8 +66,8 @@ const ServiceDetails = () => {
           serviceImage={service.imageUrl}
           providerEmail={service.serviceProvider.email}
           providerName={service.serviceProvider.name}
-          currentUserEmail={currentUser.email}
-          currentUserName={currentUser.displayName}
+          currentUserEmail={currentUser?.email || ""}
+          currentUserName={currentUser?.displayName || ""}
           price={service.price}
           onClose={() => setShowModal(false)} // Close the modal
         />

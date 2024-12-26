@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../AllContext/Authcontext';
+import axios from 'axios'; // Import Axios
 
 const ServiceToDo = () => {
     const { currentUser } = useContext(Context);
@@ -7,24 +8,26 @@ const ServiceToDo = () => {
 
     // Fetch services from the backend
     useEffect(() => {
-        fetch(`http://localhost:3000/servicetodo/${currentUser.email}`)
-            .then((res) => res.json())
-            .then((data) => setServices(data));
+        const fetchServices = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3000/servicetodo/${currentUser.email}`);
+                setServices(response.data);
+            } catch (error) {
+                console.error('Error fetching services:', error);
+            }
+        };
+
+        fetchServices();
     }, [currentUser.email]);
-// console.log(services[0]._id)
+
     // Handle status change using PATCH
     const handleStatusChange = async (serviceId, newStatus) => {
         try {
-            // Send a PATCH request to update the status
-            const response = await fetch(`http://localhost:3000/updateStatus/${serviceId}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ serviceStatus: newStatus }),
+            const response = await axios.patch(`http://localhost:3000/updateStatus/${serviceId}`, {
+                serviceStatus: newStatus,
             });
 
-            if (response.ok) {
+            if (response.status === 200) {
                 // Update the local state
                 setServices((prevServices) =>
                     prevServices.map((service) =>
@@ -44,7 +47,7 @@ const ServiceToDo = () => {
     return (
         <div className="overflow-x-auto">
             <table className="table">
-                {/* head */}
+                {/* Head */}
                 <thead>
                     <tr>
                         <th></th>
@@ -60,7 +63,7 @@ const ServiceToDo = () => {
                         <tr>
                             <th>{index + 1}</th>
                             <td>{data.serviceId}</td>
-                            <th>{data.currentUserEmail}</th>
+                            <td>{data.currentUserEmail}</td>
                             <td>{data.serviceName}</td>
                             <td>{data.price}</td>
                             <td>
@@ -69,7 +72,7 @@ const ServiceToDo = () => {
                                     value={data.serviceStatus}
                                     onChange={(e) => handleStatusChange(data._id, e.target.value)}
                                 >
-                                    <option value="pending">pending</option>
+                                    <option value="pending">Pending</option>
                                     <option value="Working">Working</option>
                                     <option value="Completed">Completed</option>
                                 </select>

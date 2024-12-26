@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const ServiceBookingModal = ({
   serviceId,
@@ -11,7 +12,6 @@ const ServiceBookingModal = ({
   price,
   onClose,
 }) => {
-    console.log(providerEmail,currentUserEmail)
   const [serviceDate, setServiceDate] = useState("");
   const [specialInstructions, setSpecialInstructions] = useState("");
 
@@ -29,21 +29,23 @@ const ServiceBookingModal = ({
       price,
       serviceStatus: "pending",
     };
- if(providerEmail===currentUserEmail)
- {
-    return console.log("same user")
- }
+
+    if (providerEmail === currentUserEmail) {
+      return console.log("Provider and user cannot be the same.");
+    }
 
     try {
-      const response = await fetch("http://localhost:3000/service/bookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingData),
-      });
+      const response = await axios.post(
+        "http://localhost:3000/service/bookings",
+        bookingData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      if (response.ok) {
+      if (response.status === 200) {
         alert("Booking successful!");
         onClose(); // Close the modal
       } else {
@@ -56,7 +58,7 @@ const ServiceBookingModal = ({
   };
 
   return (
-    <div className=" fixed inset-0 z-[10000]  bg-gray-800 bg-opacity-75 flex justify-center overflow-y-auto items-center">
+    <div className="fixed inset-0 z-[10000] bg-gray-800 bg-opacity-75 flex justify-center overflow-y-auto items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-2/3 lg:w-10/12 max-h-[90vh]">
         <h2 className="text-2xl font-bold mb-4">Book Service</h2>
         <form className="grid grid-cols-3">
@@ -78,14 +80,6 @@ const ServiceBookingModal = ({
               className="input input-bordered w-full"
             />
           </div>
-          {/* <div className="mb-2">
-            <label className="block font-medium">Service Image</label>
-            <img
-              src={serviceImage}
-              alt={serviceName}
-              className="rounded w-full"
-            />
-          </div> */}
           <div className="mb-2">
             <label className="block font-medium">Provider Email</label>
             <input

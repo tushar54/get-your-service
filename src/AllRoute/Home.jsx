@@ -4,6 +4,7 @@ import Footer from '../AllComponent/Footer';
 import Bannar from '../AllComponent/Bannar';
 import { Outlet, useLocation, } from 'react-router-dom';
 import WhyWeBest from '../AllComponent/WhyWeBest';
+import PopularCategories from '../AllComponent/PopularCategories';
 
 const Home = () => {
     console.log(navigation)
@@ -32,6 +33,9 @@ const Home = () => {
                 <Outlet></Outlet>
                 {
                     location.pathname === '/' && <WhyWeBest></WhyWeBest>
+                }
+                {
+                    location.pathname === '/' && <PopularCategories></PopularCategories>
                 }
 
                 <Footer></Footer>

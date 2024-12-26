@@ -24,6 +24,9 @@ const PopularServices = () => {
     // console.log(service)
     return (
         <div className='mt-10'>
+            <div className='text-center pb-6 '>
+                <p className='text-4xl font-bold '>Populer Section</p>
+            </div>
            <div className='grid lg:grid-cols-2 justify-around items-center gap-5'>
            {
             service.map((data)=><ServiceCard data={data} key={data._id}></ServiceCard>)

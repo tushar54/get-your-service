@@ -16,14 +16,14 @@ const Navbar = () => {
     const title = <>
         <NavLink to={'/'} className={({ isActive }) =>
             isActive
-                ? 'border-b-2 border-red-500 text-red-500 font-bold'
-                : 'text-gray-600 hover:text-red-500'
+                ? 'border-b-2 border-green-500 text-green-500 font-bold'
+                : 'text-gray-600 hover:text-green-500'
         }>Home</NavLink>
 
         <NavLink to={'/allServices'} className={({ isActive }) =>
             isActive
-                ? 'border-b-2 border-red-500 text-red-500 font-bold'
-                : 'text-gray-600 hover:text-red-500'
+                ? 'border-b-2 border-green-500 text-green-500 font-bold'
+                : 'text-gray-600 hover:text-green-500'
         }>Services</NavLink>
 
         {
@@ -65,19 +65,19 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className=" space-x-2 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className=" space-x-2 menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-bold">
                         {
                             title
                         }
                     </ul>
                 </div>
-                <a className=""><i className='flex justify-center items-center text-3xl'> <img src={logo} alt="" /> Repair </i></a>
-                <button className="btn mr-3" onClick={toggleTheme}>
+                <Link to={'/'} className=""><i className='flex justify-center items-center text-3xl gap-2'> <img className='w-[70px] h-[70px] ' src={logo} alt="" /> Repair </i></Link>
+                <button className="btn ml-2" onClick={toggleTheme}>
                     {theme === 'light' ? <CiDark></CiDark> : <CiLight />}
                 </button>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className=" space-x-2 menu menu-horizontal px-1">
+                <ul className=" space-x-6 text-lg menu menu-horizontal px-1 font-bold text-green-600 ">
                     {
                         title
                     }
@@ -85,7 +85,9 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    currentUser ? <div className='flex justify-center items-center'><Link onClick={handleLogOut} className='btn'>Log-Out</Link> <p>{currentUser.email}</p></div> : <Link to={'/login'} className='btn'>LogIn</Link>
+                    currentUser ? <div className='flex justify-center items-center gap-2'> <p className='font-semibold'>{currentUser.displayName}</p> <div className="tooltip tooltip-bottom z-10" data-tip={currentUser.email}>
+                    <img className='w-[50px] h-[50px] rounded-full' src={currentUser.photoURL} alt="" />
+                  </div> <Link onClick={handleLogOut} className='hover:bg-red-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl '>Log-Out</Link></div> : <Link to={'/login'} className='hover:bg-green-400 hover:text-white font-semibold border-2 px-3 py-2 rounded-xl'>LogIn</Link>
                 }
             </div>
         </div>

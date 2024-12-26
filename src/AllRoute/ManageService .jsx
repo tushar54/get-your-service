@@ -12,7 +12,7 @@ const ManageService = () => {
   // Fetch services added by the user
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/services/${currentUser.email}`)
+      .get(`http://localhost:3000/services/${currentUser.email}`,{withCredentials:true})
       .then((res) => setServices(res.data))
       .catch((error) => console.error("Error fetching services:", error));
   }, [currentUser.email]);

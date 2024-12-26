@@ -34,7 +34,7 @@ const PopularCategories = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-bold">Popular Categories</h2>
-          <Link to={'/allServices'} className="btn btn-outline btn-primary">Explore More</Link>
+          <Link to={'/allServices'} className="btn bg-green-500 text-white ">Explore More</Link>
         </div>
         <div  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {categories.map((category) => (

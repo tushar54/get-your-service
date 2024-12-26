@@ -4,10 +4,12 @@ import ServiceCard from '../AllComponent/ServiceCard';
 
 const AllService = () => {
     const [service,setService]=useState([])
+    const [loading,setloading]=useState(true)
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        Fetchdata(search); // Pass the search value here
+        Fetchdata(search); 
+        setloading(false);
     }, [search]);
     
 
@@ -23,7 +25,11 @@ const AllService = () => {
             console.error("Error fetching data:", error);
         }
     };
-    
+    if(loading){
+        return <div className="fixed inset-0 flex items-center justify-center bg-gray-100">
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    }
 
 
     return (

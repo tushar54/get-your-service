@@ -11,7 +11,7 @@ const ServiceToDo = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/servicetodo/${currentUser.email}`);
+                const response = await axios.get(`http://localhost:3000/servicetodo/${currentUser.email}`,{withCredentials:true});
                 setServices(response.data);
             } catch (error) {
                 console.error('Error fetching services:', error);

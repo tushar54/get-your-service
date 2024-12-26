@@ -13,7 +13,7 @@ const Home = () => {
     console.log(location)
     useEffect(() => {
         setLoading(true); 
-        const timeout = setTimeout(() => setLoading(false), 500); 
+        const timeout = setTimeout(() => setLoading(false), 800); 
         return () => clearTimeout(timeout);
       }, [location]);
   if(loading)

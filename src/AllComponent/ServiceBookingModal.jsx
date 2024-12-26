@@ -58,10 +58,11 @@ const ServiceBookingModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[10000] bg-gray-800 bg-opacity-75 flex justify-center overflow-y-auto items-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-2/3 lg:w-10/12 max-h-[90vh]">
+    <div className="fixed inset-0 z-40 bg-gray-800 bg-opacity-75 flex justify-center items-start overflow-y-auto pt-10 pb-10">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl">
         <h2 className="text-2xl font-bold mb-4">Book Service</h2>
-        <form className="grid grid-cols-3">
+        <form >
+          <div className="grid md:grid-cols-3 gap-4 ">
           <div className="mb-2">
             <label className="block font-medium">Service ID</label>
             <input
@@ -143,13 +144,16 @@ const ServiceBookingModal = ({
               className="input input-bordered w-full"
             />
           </div>
-          <button
+          </div>
+        <div className="flex justify-center items-center">
+        <button
             type="button"
             onClick={handlePurchase}
-            className="btn btn-primary w-full mt-4"
+            className="btn btn-primary w-3/4 mt-4 "
           >
             Purchase
           </button>
+        </div>
         </form>
         <button
           className="btn btn-secondary w-full mt-2"

@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css"; 
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ data, uniq }) => {
+
+    useEffect(() => {
+        AOS.init({
+          duration: 1000, // Animation duration in milliseconds
+          offset: 50,     // Offset (in px) from the original trigger point
+          easing: "ease-in-out", // Animation easing function
+          once: false,     // Whether animation should happen only once
+        });
+      }, []);
+
     const { imageUrl,
         serviceName,
         _id,
@@ -10,7 +22,7 @@ const ServiceCard = ({ data, uniq }) => {
         description } = data || {}
     return (
         <div>
-            <div className="card card-side bg-base-100 shadow-xl flex flex-col md:flex-row ">
+            <div  data-aos="fade-left"  className="card card-side bg-base-100 shadow-xl flex flex-col md:flex-row ">
                 <figure className='flex-none'>
                     <img className='md:w-full md:h-full w-[300px] h-[250px] rounded-md md: rounded-l-md'
                         src={imageUrl}

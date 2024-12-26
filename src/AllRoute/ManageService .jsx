@@ -68,11 +68,12 @@ const ManageService = () => {
           <div key={service._id} className="card bg-base-100 shadow-md">
             <img src={service.imageUrl} alt={service.serviceName} className="w-full h-48 object-cover" />
             <div className="card-body">
+              <p className='font-bold'>Service Id: {service._id}</p>
               <h2 className="text-lg font-bold">{service.serviceName}</h2>
               <p className="text-sm">{service.description}</p>
               <div className="mt-4 flex gap-2">
                 <button
-                  className="btn btn-secondary"
+                  className="bg-green-500 border-2 text-white font-bold rounded-md px-5 py-2"
                   onClick={() => {
                     setSelectedService(service);
                     setShowEditModal(true);
@@ -91,80 +92,83 @@ const ManageService = () => {
 
       {/* Edit Modal */}
       {showEditModal && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center overflow-y-scroll">
-          <div className="bg-white p-6 rounded-lg w-1/3">
-            <h2 className="text-xl font-bold mb-4">Edit Service</h2>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleUpdate(selectedService);
-              }}
-            >
-              <div className="mb-4">
-                <label className="block mb-2 font-bold">Service Name</label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  value={selectedService.serviceName}
-                  onChange={(e) =>
-                    setSelectedService({ ...selectedService, serviceName: e.target.value })
-                  }
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-2 font-bold">Service price</label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  value={selectedService.price}
-                  onChange={(e) =>
-                    setSelectedService({ ...selectedService, price: e.target.value })
-                  }
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-2 font-bold">Service Imgurl</label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  value={selectedService.imageUrl}
-                  onChange={(e) =>
-                    setSelectedService({ ...selectedService, imageUrl: e.target.value })
-                  }
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-2 font-bold">Service serviceArea</label>
-                <input
-                  type="text"
-                  className="input input-bordered w-full"
-                  value={selectedService.serviceArea}
-                  onChange={(e) =>
-                    setSelectedService({ ...selectedService, serviceArea: e.target.value })
-                  }
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block mb-2 font-bold">Description</label>
-                <textarea
-                  className="textarea textarea-bordered w-full"
-                  value={selectedService.description}
-                  onChange={(e) =>
-                    setSelectedService({ ...selectedService, description: e.target.value })
-                  }
-                ></textarea>
-              </div>
-              <div className="flex justify-end gap-2">
-                <button type="button" className="btn" onClick={() => setShowEditModal(false)}>
-                  Cancel
-                </button>
-                <button type="submit" className="btn btn-primary">
-                  Save Changes
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+       <div className="fixed inset-0 z-40 bg-gray-800 bg-opacity-75 flex justify-center items-start overflow-y-auto pt-10 pb-10">
+       <div className="bg-white p-6 rounded-lg w-full max-w-3xl">
+         <h2 className="text-xl font-bold mb-4">Edit Service</h2>
+         <form
+           onSubmit={(e) => {
+             e.preventDefault();
+             handleUpdate(selectedService);
+           }}
+         >
+           <div className="grid md:grid-cols-3 gap-4">
+             <div className="mb-4">
+               <label className="block mb-2 font-bold">Service Name</label>
+               <input
+                 type="text"
+                 className="input input-bordered w-full"
+                 value={selectedService.serviceName}
+                 onChange={(e) =>
+                   setSelectedService({ ...selectedService, serviceName: e.target.value })
+                 }
+               />
+             </div>
+             <div className="mb-4">
+               <label className="block mb-2 font-bold">Service Price</label>
+               <input
+                 type="text"
+                 className="input input-bordered w-full"
+                 value={selectedService.price}
+                 onChange={(e) =>
+                   setSelectedService({ ...selectedService, price: e.target.value })
+                 }
+               />
+             </div>
+             <div className="mb-4">
+               <label className="block mb-2 font-bold">Service Image URL</label>
+               <input
+                 type="text"
+                 className="input input-bordered w-full"
+                 value={selectedService.imageUrl}
+                 onChange={(e) =>
+                   setSelectedService({ ...selectedService, imageUrl: e.target.value })
+                 }
+               />
+             </div>
+             <div className="mb-4">
+               <label className="block mb-2 font-bold">Service Area</label>
+               <input
+                 type="text"
+                 className="input input-bordered w-full"
+                 value={selectedService.serviceArea}
+                 onChange={(e) =>
+                   setSelectedService({ ...selectedService, serviceArea: e.target.value })
+                 }
+               />
+             </div>
+             <div className="mb-4 md:col-span-3">
+               <label className="block mb-2 font-bold">Description</label>
+               <textarea
+                 className="textarea textarea-bordered w-full"
+                 value={selectedService.description}
+                 onChange={(e) =>
+                   setSelectedService({ ...selectedService, description: e.target.value })
+                 }
+               ></textarea>
+             </div>
+           </div>
+           <div className="flex justify-end gap-4">
+             <button type="button" className="btn" onClick={() => setShowEditModal(false)}>
+               Cancel
+             </button>
+             <button type="submit" className="btn btn-primary">
+               Save Changes
+             </button>
+           </div>
+         </form>
+       </div>
+     </div>
+     
       )}
     </div>
   );

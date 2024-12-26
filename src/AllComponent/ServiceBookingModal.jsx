@@ -36,7 +36,7 @@ const ServiceBookingModal = ({
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/service/bookings",
+        "https://assignment-11-server-side-mocha.vercel.app/service/bookings",
         bookingData,
         {
           headers: {

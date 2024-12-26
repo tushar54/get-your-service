@@ -16,7 +16,7 @@ const AllService = () => {
 
     const Fetchdata = async (searchQuery) => {
         try {
-            const { data } = await axios.get('http://localhost:3000/allService', {
+            const { data } = await axios.get('https://assignment-11-server-side-mocha.vercel.app/allService', {
                 params: { searchParams: searchQuery } // Add search query as a parameter
             });
             // console.log(data)

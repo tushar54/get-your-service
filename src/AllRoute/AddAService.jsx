@@ -71,7 +71,7 @@ const AddAService = () => {
     console.log(serviceData)
 
     try {
-      const response = await axios.post('http://localhost:3000/addAdata', serviceData);
+      const response = await axios.post('https://assignment-11-server-side-mocha.vercel.app/addAdata', serviceData);
       if (response.status === 200) {
         Swal.fire({
           title: "Good job!",

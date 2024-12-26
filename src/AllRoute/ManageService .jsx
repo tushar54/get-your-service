@@ -12,7 +12,7 @@ const ManageService = () => {
   // Fetch services added by the user
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/services/${currentUser.email}`,{withCredentials:true})
+      .get(`https://assignment-11-server-side-mocha.vercel.app/services/${currentUser.email}`,{withCredentials:true})
       .then((res) => setServices(res.data))
       .catch((error) => console.error("Error fetching services:", error));
   }, [currentUser.email]);
@@ -30,7 +30,7 @@ const ManageService = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/delete/${id}`)
+          .delete(`https://assignment-11-server-side-mocha.vercel.app/delete/${id}`)
           .then(() => {
             setServices((prev) => prev.filter((service) => service._id !== id));
             Swal.fire({
@@ -47,7 +47,7 @@ const ManageService = () => {
   // Handle update service
   const handleUpdate = (updatedService) => {
     axios
-      .put(`http://localhost:3000/services/${updatedService._id}`, updatedService)
+      .put(`https://assignment-11-server-side-mocha.vercel.app/services/${updatedService._id}`, updatedService)
       .then((res) => {
         console.log(res.data);
         setServices((prev) =>

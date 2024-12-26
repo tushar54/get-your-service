@@ -15,7 +15,7 @@ const ServiceDetails = () => {
     // Fetch service details using Axios
     const fetchServiceDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/service/${id}`);
+        const response = await axios.get(`https://assignment-11-server-side-mocha.vercel.app/service/${id}`);
         setService(response.data);
       } catch (error) {
         console.error("Error fetching service details:", error);

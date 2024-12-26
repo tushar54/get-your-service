@@ -11,7 +11,7 @@ const ServiceToDo = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/servicetodo/${currentUser.email}`,{withCredentials:true});
+                const response = await axios.get(`https://assignment-11-server-side-mocha.vercel.app/servicetodo/${currentUser.email}`,{withCredentials:true});
                 setServices(response.data);
             } catch (error) {
                 console.error('Error fetching services:', error);
@@ -24,7 +24,7 @@ const ServiceToDo = () => {
     // Handle status change using PATCH
     const handleStatusChange = async (serviceId, newStatus) => {
         try {
-            const response = await axios.patch(`http://localhost:3000/updateStatus/${serviceId}`, {
+            const response = await axios.patch(`https://assignment-11-server-side-mocha.vercel.app/updateStatus/${serviceId}`, {
                 serviceStatus: newStatus,
             });
 

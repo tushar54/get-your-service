@@ -13,7 +13,7 @@ const PopularServices = () => {
 
     const Fetchdata = async () => {
         try {
-            const {data}=await axios.get('http://localhost:3000/sixData')
+            const {data}=await axios.get('https://assignment-11-server-side-mocha.vercel.app/sixData')
             // console.log(data)
             setService(data)
         }

@@ -8,7 +8,7 @@ const BookedService = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/booked/${currentUser.email}`,{withCredentials:true});
+                const response = await axios.get(`https://assignment-11-server-side-mocha.vercel.app/booked/${currentUser.email}`,{withCredentials:true});
                 setServices(response.data);
             } catch (error) {
                 console.error("Error fetching services:", error);

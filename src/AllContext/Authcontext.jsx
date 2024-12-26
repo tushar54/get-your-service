@@ -43,13 +43,13 @@ const Authcontext = ({ children }) => {
             setCurrentUser(user);
            if(user?.email){
             const currentUser={email:user.email}
-            axios.post('http://localhost:3000/jwt',currentUser,{withCredentials:true})
+            axios.post('https://assignment-11-server-side-mocha.vercel.app/jwt',currentUser,{withCredentials:true})
     .then(res=>{console.log(res)
         setLoading(false)
     })
            }
            else{
-            axios.post('http://localhost:3000/logout',{},{withCredentials:true})
+            axios.post('https://assignment-11-server-side-mocha.vercel.app/logout',{},{withCredentials:true})
             .then(res=>{console.log('logout',res)
                 setLoading(false)
             })

@@ -29,7 +29,7 @@ const Navbar = () => {
                 isActive
                     ? 'border-b-2 border-green-500 text-green-500 font-bold'
                     : 'text-gray-600 hover:text-green-500'
-            }>About me</NavLink>
+            }>About Us</NavLink>
             <NavLink to={'/contact'} className={({ isActive }) =>
                 isActive
                     ? 'border-b-2 border-green-500 text-green-500 font-bold'

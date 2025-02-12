@@ -60,8 +60,8 @@ const Login = () => {
   return (
     <div>
       {/* <div><Navbar /></div> */}
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col">
+      <div className="hero  min-h-screen">
+        <div className="hero-content flex-col min-w-96">
           <div className="text-center">
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
@@ -100,12 +100,12 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-green-400 text-xl text-black">Login</button>
+                <button className="btn bg-green-500 text-xl">Login</button>
               </div>
               <div className='text-center'>
                 <h1>
                   If you don't have an account please{' '}
-                  <Link to={'/register'} className="text-blue-700">
+                  <Link to={'/register'} className="text-green-400">
                     Register
                   </Link>
                 </h1>

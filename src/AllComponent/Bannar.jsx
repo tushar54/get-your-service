@@ -31,7 +31,7 @@ export default function Bannar() {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper w-full h-[550px] overflow-hidden "
+        className="mySwiper w-full h-[500px] overflow-hidden container mx-auto bg "
       >
         <SwiperSlide
           className="bg-cover bg-center w-full h-full "
@@ -61,7 +61,7 @@ export default function Bannar() {
           {/* Optional content inside the slide */}
         </SwiperSlide>
 
-        
+
 
 
       </Swiper>

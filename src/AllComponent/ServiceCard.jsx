@@ -24,15 +24,17 @@ const ServiceCard = ({ data, uniq }) => {
         <div>
             <div  data-aos="fade-left"  className="card card-side bg-base-100 shadow-xl flex flex-col md:flex-row ">
                 <figure className='flex-none'>
-                    <img className='md:w-full md:h-full w-[300px] h-[250px] rounded-md md: rounded-l-md'
+                <div className='w-[300px] h-[250px]'>
+                    <img className='md:w-full md:h-full  rounded-md md: rounded-l-md'
                         src={imageUrl}
                         alt={serviceName} />
+                </div>
                 </figure>
                 <div className="card-body">
                     <div className='text-lg font-bold'>{serviceName}  {
                             uniq ? <p className='text-sm font-semibold'> Service Area: {uniq}</p> : ''
                         }</div>
-                    <p className="font-bold text-gray-500">
+                    <p className=" grow min-h-[72px] font-bold text-gray-500">
                         {description.length > 100
                             ? `${description.slice(0, 100)}...`
                             : description}

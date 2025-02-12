@@ -167,7 +167,7 @@ const AddAService = () => {
           {errors.description && <span className="text-red-500 text-sm">{errors.description}</span>}
         </div>
 
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn bg-green-500 text-white w-full">
           Add Service
         </button>
       </form>

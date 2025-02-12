@@ -64,7 +64,7 @@ const ManageService = () => {
       .catch((error) => console.error("Error updating service:", error));
   };
   if(services.length===0){
-    return  <div className='text-center font-bold text-3xl'> There is no manage to do</div>
+    return  <div className='font-bold text-3xl h-[500px] flex justify-center items-center'> There is no manage to do</div>
 }
 
   return (
@@ -168,7 +168,7 @@ const ManageService = () => {
              <button type="button" className="btn" onClick={() => setShowEditModal(false)}>
                Cancel
              </button>
-             <button type="submit" className="btn btn-primary">
+             <button type="submit" className="btn bg-green-500">
                Save Changes
              </button>
            </div>

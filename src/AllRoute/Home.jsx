@@ -23,14 +23,16 @@ const Home = () => {
   </div>
   }
     return (
-        <div>
+        <div className='font-fontdisplay'>
 
             <div className='container mx-auto'><Navbar></Navbar></div>
-            <div>
+            <div className='mt-20'>
                 {
                     location.pathname === '/' && <Bannar></Bannar>
                 }
-                <Outlet></Outlet>
+              <div className='min-h-[500px]'>
+              <Outlet></Outlet>
+              </div>
                 {
                     location.pathname === '/' && <WhyWeBest></WhyWeBest>
                 }

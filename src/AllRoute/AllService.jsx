@@ -46,7 +46,7 @@ const AllService = () => {
                     className="input input-bordered w-2/4 "
                 />
             </div>
-           <div className='grid lg:grid-cols-2 justify-around items-center gap-5'>
+           <div className='grid lg:grid-cols-2 justify-around justify-self-center items-center gap-5 container mx-auto'>
            {
             service.map((data)=><ServiceCard data={data} key={data._id} uniq={data.serviceArea}></ServiceCard>)
            }

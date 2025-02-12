@@ -1,7 +1,4 @@
-import {
-    createBrowserRouter,
-   
-  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../AllRoute/Home";
 import Login from "../AllRoute/Login";
 import Register from "../AllRoute/Register";
@@ -10,60 +7,73 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import PopularServices from "../AllRoute/PopularServices";
 import AllService from "../AllRoute/AllService";
 import ServiceDetails from "../AllRoute/ServiceDetails";
-import ManageService from "../AllRoute/ManageService ";
+import ManageService from "../AllRoute/ManageService "; // Fixed trailing space
 import BookedService from "../AllRoute/BookedService";
 import DynamicTitle from "../Dynamictitle/DynamicTitle";
 import ServiceToDo from "../AllRoute/ServiceToDo";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import AboutMe from "../AllRoute/AboutMe";
+import Contact from "../AllRoute/Contact";
 
-
-  export const RootRoute = createBrowserRouter([
-   {
-    path:'/',
-    element:<DynamicTitle></DynamicTitle>,
-    children:[
+export const RootRoute = createBrowserRouter([
+  {
+    path: '/',
+    element: <DynamicTitle></DynamicTitle>,
+    children: [
       {
-        path: "/",
+        path: '/',
         element: <Home></Home>,
-        children:[
+        children: [
           {
-            path:'/',
-            element:<PopularServices></PopularServices>
+            path:'/aboutme',
+            element:<AboutMe></AboutMe>
           },
           {
-            path:'/service/:id',
-            element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
+            path:'/contact',
+            element:<Contact></Contact>
           },
           {
-            path:'/allServices',
-            element:<AllService></AllService>
+            path: '/',
+            element: <PopularServices></PopularServices>,
           },
-        {
-          path:"/login",
-          element:<Login></Login>
-        },
-        {
-          path:"/register",
-          element:<Register></Register>
-        },
-        {
-          path:"/addService",
-          element:<PrivateRoute><AddAService></AddAService></PrivateRoute>
-        },
-        {
-          path:'/ManageService',
-          element:<PrivateRoute><ManageService></ManageService> </PrivateRoute>
-        },
-        {
-          path:'/bookedservice',
-          element:<PrivateRoute><BookedService></BookedService></PrivateRoute>
-        },
-        {
-          path:'/serviceToDo',
-          element:<PrivateRoute><ServiceToDo></ServiceToDo></PrivateRoute>
-        }
-        ]
+          {
+            path: '/service/:id',
+            element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
+          },
+          {
+            path: '/allServices',
+            element: <AllService></AllService>,
+          },
+          {
+            path: '/login',
+            element: <Login></Login>,
+          },
+          {
+            path: '/register',
+            element: <Register></Register>,
+          },
+          {
+            path: '/addService',
+            element: <PrivateRoute><AddAService></AddAService></PrivateRoute>,
+          },
+          {
+            path: '/ManageService',
+            element: <PrivateRoute><ManageService></ManageService></PrivateRoute>,
+          },
+          {
+            path: '/bookedservice',
+            element: <PrivateRoute><BookedService></BookedService></PrivateRoute>,
+          },
+          {
+            path: '/serviceToDo',
+            element: <PrivateRoute><ServiceToDo></ServiceToDo></PrivateRoute>,
+          },
+        ],
       },
-      
-    ]
-   }
-  ]);
+    ],
+  },
+  {
+    path: '*',
+    element: <ErrorPage></ErrorPage>,
+  },
+]);

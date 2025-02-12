@@ -20,7 +20,7 @@ const BookedService = () => {
    
 
     if(services.length===0){
-        return  <div className='text-center font-bold text-3xl'> There is no Service to do</div>
+        return  <div className='font-bold text-3xl h-[500px] flex justify-center items-center'> There is no Service to do</div>
     }
 
     return (

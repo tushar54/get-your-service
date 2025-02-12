@@ -14,6 +14,8 @@ const DynamicTitle = () => {
       "/ManageService": "ManageService",
       "/bookedservice": "bookedservice",
       "/serviceToDo": "serviceToDo",
+      "/contact": "Contact",
+      "/aboutme": "About Me",
     };
 
     // Check for dynamic routes or nested paths
